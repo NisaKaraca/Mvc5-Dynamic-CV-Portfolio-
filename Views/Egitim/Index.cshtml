@@ -1,0 +1,66 @@
+﻿@using MvcCv.Models.Entity
+@model List<Tbl_Egitimlerim>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="content pt-3">
+    <div class="container-fluid">
+
+        <div class="card shadow-sm">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h3 class="card-title"><b>Eğitimlerim</b></h3>
+            </div>
+            <div class="card-body p-0">
+                <table class="table table-hover text-nowrap mb-0">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>#</th>
+                            <th>Başlık</th>
+                            <th>Alt Başlık</th>
+                            <th>Alt Başlık 2</th>
+                            <th>GNO</th>
+                            <th>Tarih</th>
+                            <th>Düzenle</th>
+                            <th>Sil</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.ID</td>
+                                <td><strong>@item.Baslik</strong></td>
+                                <td>@item.AltBaslik1</td>
+                                <td>@item.AltBaslik2</td>
+                                <td>@item.GNO</td>
+                                <td>
+                                    <span class="badge badge-secondary">
+                                        @item.Tarih
+                                    </span>
+                                </td>
+                                <td>
+                                    <a href="/Egitim/EgitimDüzenle/@item.ID" class="btn btn-sm btn-outline-warning">
+                                        Düzenle
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="/Egitim/EgitimSil/@item.ID" class="btn btn-sm btn-outline-danger">
+                                        Sil
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+
+                </table>
+
+            </div>
+        </div>
+        <a href="/Egitim/EgitimEkle/" class="btn btn-outline-primary btn-sm">+ Yeni Eğitim</a>
+
+    </div>
+</section>
+

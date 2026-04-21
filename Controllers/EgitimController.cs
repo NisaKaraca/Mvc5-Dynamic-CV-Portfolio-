@@ -1,0 +1,66 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using MvcCv.Models.Entity;
+using MvcCv.Repositories;
+
+namespace MvcCv.Controllers
+{
+    public class EgitimController : Controller
+    {
+        GenericRepository<Tbl_Egitimlerim> repo = new GenericRepository<Tbl_Egitimlerim>();
+
+        public ActionResult Index()
+        {
+            var egitim = repo.List();
+            return View(egitim);
+        }
+        [HttpGet]
+        public ActionResult EgitimEkle()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult EgitimEkle(Tbl_Egitimlerim p)
+        {
+            if(!ModelState.IsValid)
+            {
+                return View("EgitimEkle");
+            }
+            repo.TAdd(p);
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult EgitimSil(int id)
+        {
+            var egitim = repo.Find(x => x.ID == id);
+            repo.TDelete(egitim);
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public ActionResult EgitimDüzenle(int id)
+        {
+            var egitim = repo.Find(x => x.ID == id);
+            return View(egitim);
+        }
+        [HttpPost]
+        public ActionResult EgitimDüzenle(Tbl_Egitimlerim p)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("EgitimDuzenle");
+            }
+            var egitim = repo.Find(x => x.ID == p.ID);
+            egitim.Baslik = p.Baslik;
+            egitim.AltBaslik1 = p.AltBaslik1;
+            egitim.AltBaslik2 = p.AltBaslik2;
+            egitim.GNO = p.GNO;
+            egitim.Tarih = p.Tarih;
+            repo.TUpdate(egitim);
+            return RedirectToAction("Index");
+        }
+
+    }
+}

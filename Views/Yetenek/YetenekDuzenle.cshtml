@@ -1,0 +1,43 @@
+﻿@model MvcCv.Models.Entity.Tbl_Yeteneklerim
+@{
+    ViewBag.Title = "YetenekDuzenle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="content pt-4">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-15">
+                <div class="card custom-exp-card">
+                    <div class="card-body p-4">
+                        <h3 class="custom-exp-title">Yetenek Güncelle</h3>
+                        <p class="custom-exp-text">Yetenek bilgilerini aşağıdaki alanlardan güncelleyebilirsiniz.</p>
+
+                        <form method="post">
+                            <div class="form-group">
+                                <label>ID</label>
+                                @Html.TextBoxFor(x => x.ID, new { @class = "form-control", @readonly = "readonly" })
+                            </div>
+
+                            <div class="form-group">
+                                <label>Başlık</label>
+                                @Html.TextBoxFor(x => x.Yetenek, new { @class = "form-control custom-input" })
+                            </div>
+
+                            <div class="form-group">
+                                <label>Oran</label>
+                                @Html.TextBoxFor(x => x.Oran, new { @class = "form-control custom-input" })
+                            </div>
+
+                            <div class="d-flex justify-content-end mt-4">
+                                <a href="/Yetenek/Index/" class="btn custom-cancel-btn mr-2">Vazgeç</a>
+                                <button type="submit" class="btn custom-save-btn">Güncelle</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

@@ -1,0 +1,68 @@
+﻿@using MvcCv.Models.Entity
+@model List<Tbl_Sertifikalarim>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header p-2">
+                        <h5><b>Sertifikalarım</b></h5>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="tab-pane" id="timeline">
+                            <div class="timeline timeline-inverse">
+
+                                @if (Model != null)
+                                {
+                                    foreach (var item in Model)
+                                    {
+                                        <div class="badge badge-secondary">
+                                            <span class="badge-secondary">
+                                                @item.Tarih
+                                            </span>
+                                        </div>
+
+                                        <div>
+                                            <i class="fas fa-briefcase bg-primary"></i>
+
+                                            <div class="timeline-item">
+                                                <h3 class="timeline-header">
+                                                    <strong>@item.Baslik</strong> - @item.AltBaslik
+                                                </h3>
+
+                                                <div class="timeline-body">
+                                                    <p>@item.Aciklama1</p>
+                                                    <p>@item.Aciklama2</p>
+                                                </div>
+
+                                                <div>
+                                                    <a href="/Sertifika/SertifikaGetir/@item.ID" class="btn btn-outline-primary btn-sm">Düzenle</a>
+                                                    <a href="/Sertifika/SertifikaSil/@item.ID" class="btn btn-outline-danger btn-sm">Sil</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                                else
+                                {
+                                    <p>Henüz sertifika bilgisi bulunmuyor.</p>
+                                }
+
+                            </div>
+                            <a href="/Sertifika/YeniSertifika/" class="btn btn-outline-primary btn-sm">+ Yeni Sertifika</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

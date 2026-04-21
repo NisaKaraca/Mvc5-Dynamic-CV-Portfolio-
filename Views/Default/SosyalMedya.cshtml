@@ -1,0 +1,13 @@
+﻿@using MvcCv.Models.Entity
+@model List<Tbl_SosyalMedya>
+<div class="social-icons">
+    @foreach (var item in Model)
+    {
+        if (item.Durum == true)
+        {
+            <a class="social-icon" href="@item.Link">
+                <i class="@item.Ikon"></i>
+            </a>
+        }
+    }
+</div>

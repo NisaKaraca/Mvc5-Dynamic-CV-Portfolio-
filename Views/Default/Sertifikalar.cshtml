@@ -1,0 +1,29 @@
+﻿@using MvcCv.Models.Entity;
+@model List<Tbl_Sertifikalarim>
+<div class="resume-section-content">
+    <h2 class="mb-5">Katılım & Sertifikalar</h2>
+    <ul class="fa-ul mb-0">
+        @foreach (var item in Model)
+        {
+            <li class="mb-4">
+                <span class="fa-li">
+                    <i class="fas fa-trophy text-warning"></i>
+                </span>
+
+                <strong>@item.Baslik</strong> <br />
+
+                <span style="color: #bd5d38;">@item.AltBaslik</span> <br />
+
+                <small style="color: gray;">@item.Tarih</small>
+
+                <p style="margin-top:5px;">
+                    @item.Aciklama1
+                </p>
+
+                <p>
+                    @item.Aciklama2
+                </p>
+            </li>
+        }
+    </ul>
+</div>

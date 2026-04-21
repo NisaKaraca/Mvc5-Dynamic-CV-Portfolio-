@@ -1,0 +1,35 @@
+﻿@using MvcCv.Models.Entity
+@model List<Tbl_Yeteneklerim>
+<div class="resume-section-content">
+    <h2 class="mb-5">Yetenekler</h2>
+
+    <div class="subheading mb-3">Programlama Dilleri & Araçları </div>
+    <ul class="list-inline dev-icons">
+        <li class="list-inline-item" title="HTML5"><i class="fab fa-html5"></i></li>
+        <li class="list-inline-item" title="CSS3"><i class="fab fa-css3-alt"></i></li>
+        <li class="list-inline-item" title="JavaScript"><i class="fab fa-js-square"></i></li>
+        <li class="list-inline-item" title="C#"><i class="fas fa-code"></i></li>
+        <li class="list-inline-item" title="ASP.NET MVC"><i class="fas fa-server"></i></li>
+        <li class="list-inline-item" title="ASP.NET Core"><i class="fas fa-layer-group"></i></li>
+        <li class="list-inline-item" title="MSSQL"><i class="fas fa-database"></i></li>
+        <li class="list-inline-item" title="PostgreSQL"><i class="fas fa-database"></i></li>
+        <li class="list-inline-item" title="Entity Framework"><i class="fas fa-project-diagram"></i></li>
+        <li class="list-inline-item" title="OOP"><i class="fas fa-cubes"></i></li>
+        <li class="list-inline-item" title="MVC Architecture"><i class="fas fa-sitemap"></i></li>
+        <li class="list-inline-item" title="N-Layer Architecture"><i class="fas fa-layer-group"></i></li>
+        <li class="list-inline-item" title="CRUD Operations"><i class="fas fa-edit"></i></li>
+        <li class="list-inline-item" title="LINQ"><i class="fas fa-filter"></i></li>
+        <li class="list-inline-item" title="GitHub"><i class="fab fa-github"></i></li>
+    </ul>
+    <div class="subheading mb-3">Becerilerim</div>
+    <ul class="fa-ul mb-0">
+        @foreach (var item in Model)
+        {
+            <li>
+                <span class="fa-li"><i class="fas fa-check"></i></span>
+                @item.Yetenek
+            </li>
+        }
+
+    </ul>
+</div>

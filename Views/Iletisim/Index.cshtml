@@ -1,0 +1,67 @@
+﻿@using MvcCv.Models.Entity;
+@model List<MvcCv.Models.Entity.Tbl_Iletisim>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header p-2">
+                        <h5><b>Gelen Mesajlar</b></h5>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="timeline timeline-inverse">
+
+                            @if (Model != null && Model.Count > 0)
+                            {
+                                foreach (var item in Model)
+                                {
+                                    <div class="badge badge-secondary">
+                                        <span class="badge-secondary">
+                                            @(item.Tarih.HasValue ? item.Tarih.Value.ToString("dd-MM-yyyy") : "")
+                                        </span>
+                                    </div>
+
+                                    <div>
+                                        <i class="fas fa-envelope bg-primary"></i>
+
+                                        <div class="timeline-item">
+                                            <h3 class="timeline-header">
+                                                <strong>@item.Mail</strong> - @item.AdSoyad
+                                            </h3>
+
+                                            <div class="timeline-body">
+                                                <b>Konu:</b> @item.Konu <br />
+                                                <b>Mesaj:</b> @item.Mesaj
+                                            </div>
+
+                                            <div>
+                                                <a href="/Iletisim/MesajSil/@item.ID"
+                                                   class="btn btn-outline-danger btn-sm">
+                                                    Sil
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                            else
+                            {
+                                <p>Henüz mesaj yok.</p>
+                            }
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+

@@ -1,0 +1,55 @@
+﻿@model MvcCv.Models.Entity.Tbl_Egitimlerim
+@{
+    ViewBag.Title = "EgitimDüzenle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="content pt-4">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-15">
+                <div class="card custom-exp-card">
+                    <div class="card-body p-4">
+                        <h3 class="custom-exp-title">Eğitim Bilgilerini Düzenle</h3>
+                        <p class="custom-exp-text">Eğitim bilgilerini aşağıdaki alanlardan güncelleyebilirsiniz.</p>
+
+                        <form method="post">
+                            <div class="form-group">
+                                <label>ID</label>
+                                @Html.TextBoxFor(x => x.ID, new { @class = "form-control", @readonly = "readonly" })
+                            </div>
+
+                            <div class="form-group">
+                                <label>Başlık</label>
+                                @Html.TextBoxFor(x => x.Baslik, new { @class = "form-control custom-input" })
+                            </div>
+
+                            <div class="form-group">
+                                <label>Alt Başlık 1</label>
+                                @Html.TextBoxFor(x => x.AltBaslik1, new { @class = "form-control custom-input" })
+                            </div>
+                            <div class="form-group">
+                                <label>Alt Başlık 2</label>
+                                @Html.TextBoxFor(x => x.AltBaslik2, new { @class = "form-control custom-input" })
+                            </div>
+                            <div class="form-group">
+                                <label>GNO</label>
+                                @Html.TextBoxFor(x => x.GNO, new { @class = "form-control custom-input" })
+                            </div>
+                            <div class="form-group">
+                                <label>Tarih</label>
+                                @Html.TextBoxFor(x => x.Tarih, new { @class = "form-control custom-input" })
+                            </div>
+
+                            <div class="d-flex justify-content-end mt-4">
+                                <a href="/Egitim/Index/" class="btn custom-cancel-btn mr-2">Vazgeç</a>
+                                <button type="submit" class="btn custom-save-btn">Güncelle</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
